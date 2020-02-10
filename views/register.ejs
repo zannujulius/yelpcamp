@@ -1,0 +1,31 @@
+<%- include ("./partials/header") %>
+<style>
+    @media (max-width: 450px){
+        .header-text{
+            font-size:150%;
+        }
+        .form{
+            width:80% !important;
+        }
+    }
+    .form{
+        width:50%;
+        margin:30px auto;
+    }
+</style>
+    <div class="container mt-5  pb-2 pt-1 shadow ">
+        <h4 class="text-center"><ion-icon name="person-add"></ion-icon> Sign up page</h4>
+        <div class="form">
+            <form method="POST" action="/register">
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control"  placeholder="username">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="password">
+                </div>
+                    <button class="btn btn-md btn-warning text-white ">Submit</button>           
+            </form>
+        </div>
+
+    </div>
+<%- include ("./partials/footer") %>

@@ -1,0 +1,63 @@
+<%- include ("../partials/header") %>
+
+
+<div class="container mb-5 mt-4">
+    <div class="row">
+        <div class="col-lg-3 col-md-3">
+            <p class="lead">YelpCamp</p>
+            <ul class="list-group">
+                <li class="list-group-item active p-2 ">Info 1</li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="thumbnail border">
+                <img class="w-100 d-block"  src="<%= campground.image %>">
+                <div class="caption-full p-2">
+                    <h4 class="text-right">$<%= campground.price %>/night</h4>
+                    <h4 class="mb-1"><a href=""></a><%= campground.name.toUpperCase() %> </h4>
+                    <hr>
+                    <p class=""> <%= campground.description %> </p>
+                    <p class="">
+                        <em>Submitted by <%= campground.author.username %></em>
+                    </p>
+                    <% if(currentUser && campground.author.id.equals(currentUser._id)){ %> 
+                        <a class="btn btn-xs btn-warning text-white py-0" href="/campgrounds/<%= campground._id %>/edit"><ion-icon name="create"></ion-icon>Edit</a>
+                        <form id="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
+                            <a class="btn btn-xs btn-outline-danger text-danger px-2 py-0"> 
+                               Delete
+                            </a>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+            <div class="well p-3" style="background-color:rgba(207, 207, 207, 0.466)"> 
+                <div class="text-right">
+                    <a class="btn btn-success" href="/campgrounds/<%= campground._id %>/comments/new">Add New Comment</a>
+                </div>
+                <hr>
+                <% campground.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p style="display:inline;margin-right:50%;"><strong ><%= comment.author.username %></strong></p>
+                            <p style="display:inline;" class="mb-0">10 days ago</p>
+                            <p class="mb-2 px-2 py-1" style="background-color:rgb(247, 247, 247);border-radius: 5px;"> <%= comment.text %> </p>   
+                            <a class="btn btn-xs btn-warning text-white py-0" 
+                                href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
+                                <ion-icon name="create"></ion-icon>Edit
+                            </a>
+                            <!-- A form is used to make a delete request -->
+                            <form id="delete-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-xs btn-outline-danger py-0">Delete</button>
+                            </form>
+                        </div>
+                    </div>   
+                <% }) %> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+ 
+<%- include ("../partials/footer") %> 

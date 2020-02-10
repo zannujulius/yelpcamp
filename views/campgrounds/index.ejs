@@ -1,0 +1,51 @@
+<%- include ("../partials/header") %>
+
+
+    <div class="container mt-3">
+        <header class="jumbotron">
+            <div class="container">
+                <h1 class="text-white"><i class="fas fa-campground"></i> Welcome to Yelpcamp</h1>
+                <p class="lead text-white">View our hand-picked campgrounds from all over the world</p>
+                <p>
+                    <a class="btn btn-primary btn-large" href="/campgrounds/new"> add new campground </a>
+                </p>
+            </div>
+        </header>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-10">
+                        <p class="lead ">
+                            <span style="font-weight: bold"><i class="fas fa-campground"></i>Yelp Camp</span> provides you with lots of campgrounds visited by individuals, groups, families, friends and more.
+                            Checkout the comments to see what people are about your campground.
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-10">
+                        <p class="lead">Hey there, are you looking <span class="pt-2"><ion-icon name="search"></ion-icon></span> for a place to create memories and don't have an option? Try Yelpcamp today.
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div class="container-fluid mb-5">
+        <div class="container shadow py-3">
+            <h4 class="text-center  text-info">Campgrounds</h4>
+            <div class="row mb-4">
+                <% campgrounds.forEach(function(campground){ %>
+                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 d-flex justify-content-center" style="display:flex; flex-wrap:wrap;">     
+                        <div class="card" style="width: 18rem;">
+                            <img src="<%= campground.image %>" class="card-img-top" alt="<%= campground.name %>" style="height:150px">
+                            <div class="card-body p-2">
+                            <p class="card-text mb-0"style="font-weight:bold;"><%= campground.name.toUpperCase() %></p>
+                            <p class="mb-0    "><%= campground.description.substring(0, 35) %>...</p>
+                            <div class="text-right">
+                                <a href="/campgrounds/<%= campground._id %>" class="pr-2">more</a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>    
+            </div>
+        </div>
+    </div>
+<%- include ("../partials/footer") %> 
