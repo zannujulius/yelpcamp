@@ -41,14 +41,18 @@
                             <p style="display:inline;margin-right:50%;"><strong ><%= comment.author.username %></strong></p>
                             <p style="display:inline;" class="mb-0">10 days ago</p>
                             <p class="mb-2 px-2 py-1" style="background-color:rgb(247, 247, 247);border-radius: 5px;"> <%= comment.text %> </p>   
-                            <a class="btn btn-xs btn-warning text-white py-0" 
-                                href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
-                                <ion-icon name="create"></ion-icon>Edit
-                            </a>
-                            <!-- A form is used to make a delete request -->
-                            <form id="delete-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                <button class="btn btn-xs btn-outline-danger py-0">Delete</button>
-                            </form>
+                            
+                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %> 
+                                <a class="btn btn-xs btn-warning text-white py-0" 
+                                    href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
+                                    <ion-icon name="create"></ion-icon>Edit
+                                </a>
+                                <!-- A form is used to make a delete request -->
+                                <form id="delete-form" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                    <button class="btn btn-xs btn-outline-danger py-0">Delete</button>
+                                </form>
+                            <% } %>
+                        
                         </div>
                     </div>   
                 <% }) %> 
