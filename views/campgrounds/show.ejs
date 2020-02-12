@@ -15,7 +15,7 @@
                 <div class="caption-full p-2">
                     <h4 class="text-right">$<%= campground.price %>/night</h4>
                     <h4 class="mb-1"><a href=""></a><%= campground.name.toUpperCase() %> </h4>
-                    <hr>
+                    <hr style="width:30%;">
                     <p class=""> <%= campground.description %> </p>
                     <p class="">
                         <em>Submitted by <%= campground.author.username %></em>
@@ -52,7 +52,6 @@
                                     <button class="btn btn-xs btn-outline-danger py-0">Delete</button>
                                 </form>
                             <% } %>
-                        
                         </div>
                     </div>   
                 <% }) %> 
@@ -61,7 +60,4 @@
     </div>
 </div>
 
-
-
- 
 <%- include ("../partials/footer") %> 
