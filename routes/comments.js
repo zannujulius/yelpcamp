@@ -59,11 +59,12 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnerShip, function(req, 
 })
 //Update comment route 
 router.put("/:comment_id", middleware.checkCommentOwnerShip, function(req, res){
-    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment).then(UpdatedComment => {
-        res.redirect("/campgrounds/" + req.params.id);
-    }).catch(err => {
-        res.redirect("back")
-    });
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, UpdatedComment) {
+        if(err){
+            res.redirect('back');
+        }else{
+            res.redirect('campgrounds/' + res.params.id)
+        }
 })  
 
 //Destroy route for comments

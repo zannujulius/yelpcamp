@@ -25,7 +25,7 @@ app.use(methodOverride("_method"));
 app.use(flash());
 //seedDB();  //seed the database
 
-//passport Config
+//passport Configuration
 app.use(require("express-session")({
     secret: "my market",
     resave: false,
