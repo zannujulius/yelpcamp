@@ -49,4 +49,4 @@ router.get("/logout", function(req, res){
     res.redirect("/campgrounds")
 })
 
-module.exports  =  router;
+module.exports  =  router

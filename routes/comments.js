@@ -65,7 +65,9 @@ router.put("/:comment_id", middleware.checkCommentOwnerShip, function(req, res){
         }else{
             res.redirect('campgrounds/' + res.params.id)
         }
-})  
+}) 
+})
+
 
 //Destroy route for comments
 router.delete("/:comment_id", middleware.checkCommentOwnerShip, function(req, res){
